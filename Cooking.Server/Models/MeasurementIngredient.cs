@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cooking.Server.Models
 {
@@ -12,12 +13,15 @@ namespace Cooking.Server.Models
         public string? Details { get; set; }
 
         [ForeignKey("IngredientID")]
-        public virtual Ingredent Ingredent { get; set; }
+        [ValidateNever]
+        public virtual Ingredient Ingredient { get; set; }
 
         [ForeignKey("MeasurementID")]
+        [ValidateNever]
         public virtual Measurement Measurement { get; set; }
 
         [ForeignKey("RecipeID")]
+        [ValidateNever]
         public virtual Recipe Recipe { get; set; }
     }
 }

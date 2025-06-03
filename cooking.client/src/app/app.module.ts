@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { RecipeListComponent } from './Recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.component';
+import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.com
     NavbarComponent,
     CategoryListComponent,
     RecipeListComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    RecipeCardComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

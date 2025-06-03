@@ -2,10 +2,10 @@
 
 namespace Cooking.Server.Models
 {
-    public class Ingredent
+    public class Ingredient
     {
         [Required, Key] 
-        public int IngredentID { get; set; }
+        public int IngredientID { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
 

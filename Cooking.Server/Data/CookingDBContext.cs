@@ -17,7 +17,7 @@ namespace Cooking.Server.Data
 
             modelBuilder.Entity<Recipe>().Navigation<MeasurementIngredient>(r => r.MeasurementIngredients).AutoInclude();
             modelBuilder.Entity<MeasurementIngredient>().Navigation<Measurement>(r => r.Measurement).AutoInclude();
-            modelBuilder.Entity<MeasurementIngredient>().Navigation<Ingredent>(r => r.Ingredent).AutoInclude();
+            modelBuilder.Entity<MeasurementIngredient>().Navigation<Ingredient>(r => r.Ingredient).AutoInclude();
 
             //seed data
             int recipeId = 1;
@@ -36,14 +36,14 @@ namespace Cooking.Server.Data
 
             modelBuilder.Entity<Recipe>().HasData(muffin);
 
-            var blueberry = new Ingredent
+            var blueberry = new Ingredient
             {
-                IngredentID = ingredientId,
+                IngredientID = ingredientId,
                 Name = "Blueberry",
                 Description = "Fruit"
             };
 
-            modelBuilder.Entity<Ingredent>().HasData(blueberry);
+            modelBuilder.Entity<Ingredient>().HasData(blueberry);
 
             var cups = new Measurement
             {
@@ -67,7 +67,7 @@ namespace Cooking.Server.Data
         }
 
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Ingredent> Ingredents { get; set; }
+        public DbSet<Ingredient> Ingredents { get; set; }
         public DbSet<Measurement> Mesurements { get; set; }
         public DbSet<MeasurementIngredient> MesurementIngredients { get; set; }
     }
