@@ -3,6 +3,7 @@ using Cooking.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cooking.Server.Migrations
 {
     [DbContext(typeof(CookingDBContext))]
-    partial class CookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250606185921_AddedImageProptoRecipe")]
+    partial class AddedImageProptoRecipe
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,12 +37,9 @@ namespace Cooking.Server.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IngredientID");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("Ingredents");
 
@@ -62,12 +62,9 @@ namespace Cooking.Server.Migrations
 
                     b.Property<string>("MeasurementName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MeasurementID");
-
-                    b.HasIndex("MeasurementName")
-                        .IsUnique();
 
                     b.ToTable("Mesurements");
 

@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cooking.Server.Models
 {
+    [Index(nameof(Name), IsUnique = true)]
     public class Ingredient
     {
         [Required, Key] 

@@ -1,7 +1,9 @@
 <div class="card">
-  <img src="..." class="card-img-top" alt="...">
+  <img [src]="recipe?.imageURL" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ recipe.name }}</h5>
     <p class="card-text">{{ recipe.description }}</p>
+    <button class="btn-primary" [routerLink]="['/Recipes', recipe.recipeID]">Recipe Details</button>
   </div>
 </div>
+

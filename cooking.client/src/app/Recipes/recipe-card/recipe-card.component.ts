@@ -14,6 +14,7 @@ export class RecipeCardComponent {
       recipeTag: '',
       description: '',
       instructions: '',
-      measurementIngredients: []
+      measurementIngredients: [],
+      imageURL: ''
   }
 }

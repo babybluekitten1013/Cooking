@@ -25,25 +25,26 @@ export class RecipeListComponent implements OnInit {
         description: 'cooked bread',
         instructions: 'put in toaster',
         measurementIngredients: [
-          {
-              measurementIngredientId: 0,
-              measurementId: 0,
-              ingredientId: 0,
-              recipeID: 0,
-              quantity: 1,
-              details: '',
-              ingredient: {
-                  ingredientId: 0,
-                  name: 'Bread',
-                  description: 'Yum Bread'
-              },
-              measurement: {
-                  measurementId: 0,
-                  measurementName: 'Piece'
-              },
-              recipe: null
-          }
-        ]
+            {
+                measurementIngredientId: 0,
+                measurementId: 0,
+                ingredientId: 0,
+                recipeID: 0,
+                quantity: 1,
+                details: '',
+                ingredient: {
+                    ingredientId: 0,
+                    name: 'Bread',
+                    description: 'Yum Bread'
+                },
+                measurement: {
+                    measurementId: 0,
+                    measurementName: 'Piece'
+                },
+                recipe: null
+            }
+        ],
+        imageURL: ''
     });
   }
 }

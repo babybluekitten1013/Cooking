@@ -31,7 +31,8 @@ namespace Cooking.Server.Data
                 Name = "Blueberry Muffin",
                 RecipeTag = "Breakfast",
                 Description = "Pastery",
-                Instructions = "mix and cook! ENJOY!"
+                Instructions = "mix and cook! ENJOY!",
+                ImageURL = "images/BlueberryMuffin.jpg"
             };
 
             modelBuilder.Entity<Recipe>().HasData(muffin);

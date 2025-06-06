@@ -1,1 +1,24 @@
-<p>recipe-detail works!</p>
+@let recipe = recipe$ | async;
+<div class="container">
+  <h1>{{recipe?.name}}</h1>
+  <img class="float-end" [src]="recipe?.imageURL" />
+  <div class="">
+    Tags:
+    <span>{{recipe?.recipeTag}}</span>
+  </div>
+  <p>{{recipe?.description}}</p>
+
+  <div>
+    <ul>
+      <li *ngFor="let mingred of recipe?.measurementIngredients">
+        {{mingred.quantity}} {{mingred.measurement?.measurementName}} {{mingred.ingredient?.name}}
+      </li>
+    </ul>
+  </div>
+
+
+
+<pre>{{recipe | json }}</pre>
+
+</div>
+
