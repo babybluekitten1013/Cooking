@@ -17,6 +17,7 @@ export class RecipeListComponent implements OnInit {
     this.dataService.getAllRecipes();
   }
 
+  // TODO: this is where the form needs to go
   createRecipe() {
     this.dataService.createRecipe({
         recipeID: 0,
@@ -24,27 +25,30 @@ export class RecipeListComponent implements OnInit {
         recipeTag: 'bread',
         description: 'cooked bread',
         instructions: 'put in toaster',
+        prepTime: "1 minute",
+        cookTime: "1 minute",
+        yield: 2,
+        imageURL: 'images/Bread.jpg',
         measurementIngredients: [
             {
                 measurementIngredientId: 0,
-                measurementId: 0,
-                ingredientId: 0,
+                measurementId: 2,
+                ingredientId: 3,
                 recipeID: 0,
                 quantity: 1,
                 details: '',
                 ingredient: {
                     ingredientId: 0,
-                    name: 'Bread',
+                    name: 'Toasty Bread',
                     description: 'Yum Bread'
                 },
                 measurement: {
                     measurementId: 0,
-                    measurementName: 'Piece'
+                    measurementName: 'One Piece'
                 },
                 recipe: null
             }
         ],
-        imageURL: ''
     });
   }
 }

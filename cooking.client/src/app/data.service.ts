@@ -8,6 +8,9 @@ export interface Recipe {
   recipeTag: string,
   description: string,
   instructions: string,
+  prepTime: string,
+  cookTime: string,
+  yield: number,
   imageURL: string,
   measurementIngredients: MeasurementIngredient[]
 }
@@ -86,7 +89,6 @@ export class DataService {
   deleteRecipe(id: number) {
     this.http.delete<Recipe>(`api/Recipes/${id}`).subscribe(data => {
       this.getAllRecipes();
-      this.getRecipe(data.recipeID);
     })
   }
 

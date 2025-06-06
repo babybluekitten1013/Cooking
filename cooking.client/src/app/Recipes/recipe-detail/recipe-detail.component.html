@@ -1,14 +1,27 @@
 @let recipe = recipe$ | async;
 <div class="container">
   <h1>{{recipe?.name}}</h1>
+
   <img class="float-end" [src]="recipe?.imageURL" />
-  <div class="">
+
+  <div class="tags">
     Tags:
     <span>{{recipe?.recipeTag}}</span>
   </div>
-  <p>{{recipe?.description}}</p>
+  <div class="tags_2">
+  <span>{{recipe?.description}}</span>
+  </div>
+
+  <div class="">
+    <ul>
+      <li>Prep Time: {{recipe?.prepTime}}</li>
+      <li>Cook Time: {{recipe?.cookTime}}</li>
+      <li>Yields: {{recipe?.yield}} {{recipe?.name}}</li>
+    </ul>
+  </div>
 
   <div>
+    <h2> Ingredients: </h2>
     <ul>
       <li *ngFor="let mingred of recipe?.measurementIngredients">
         {{mingred.quantity}} {{mingred.measurement?.measurementName}} {{mingred.ingredient?.name}}
@@ -16,9 +29,10 @@
     </ul>
   </div>
 
-
-
-<pre>{{recipe | json }}</pre>
-
+  <div>
+    <h2> Instructions: </h2>
+    <p>{{recipe?.instructions}}</p>
+  </div>
+<!--<pre>{{recipe | json }}</pre>-->
 </div>
 

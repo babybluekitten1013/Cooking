@@ -3,6 +3,7 @@ using Cooking.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cooking.Server.Migrations
 {
     [DbContext(typeof(CookingDBContext))]
-    partial class CookingDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250606210259_AddedRecipeProp")]
+    partial class AddedRecipeProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,6 +136,7 @@ namespace Cooking.Server.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecipeID"));
 
                     b.Property<string>("CookTime")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -151,12 +155,13 @@ namespace Cooking.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PrepTime")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RecipeTag")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Yield")
+                    b.Property<int>("Yield")
                         .HasColumnType("int");
 
                     b.HasKey("RecipeID");

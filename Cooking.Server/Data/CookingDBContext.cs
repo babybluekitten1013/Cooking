@@ -32,6 +32,9 @@ namespace Cooking.Server.Data
                 RecipeTag = "Breakfast",
                 Description = "Pastery",
                 Instructions = "mix and cook! ENJOY!",
+                PrepTime = "20 minutes",
+                CookTime = "20 minutes",
+                Yield = 24,
                 ImageURL = "images/BlueberryMuffin.jpg"
             };
 
