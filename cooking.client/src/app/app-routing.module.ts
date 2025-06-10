@@ -4,6 +4,7 @@ import { LandingComponent } from './landing/landing.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { RecipeListComponent } from './Recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,16 @@ const routes: Routes = [
     component: RecipeListComponent
   },
   {
+    path: "Recipes/create",
+    component: RecipeEditComponent
+  },
+  {
     path: "Recipes/:id",
     component: RecipeDetailComponent
+  },
+  {
+    path: "Recipes/:id/edit",
+    component: RecipeEditComponent
   }
 ];
 

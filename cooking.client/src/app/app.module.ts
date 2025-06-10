@@ -10,6 +10,8 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { RecipeListComponent } from './Recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.component';
 import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,14 @@ import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component
     CategoryListComponent,
     RecipeListComponent,
     RecipeDetailComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipeEditComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
-    AppRoutingModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
