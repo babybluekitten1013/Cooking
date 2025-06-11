@@ -112,11 +112,8 @@ export class DataService {
   }
 
   // create
-  createIngedients(ingredient: Ingredient) {
-    this.http.post<Ingredient>(`api/Ingredients`, ingredient).subscribe(data => {
-      this.getAllIngedients();
-      this.getIngedients(data.ingredientID);
-    })
+  createIngedients(ingredient: Ingredient): Observable<Ingredient> {
+    return this.http.post<Ingredient>(`api/Ingredients`, ingredient);
   }
 
   // update by id
@@ -151,11 +148,8 @@ export class DataService {
   }
 
   // create
-  createMeasurments(measurement: Measurement) {
-    this.http.post<Measurement>(`api/Measurements`, measurement).subscribe(data => {
-      this.getAllMeasurments()
-      this.getMeasurments(data.measurementID);
-    })
+  createMeasurments(measurement: Measurement): Observable<Measurement> {
+    return this.http.post<Measurement>(`api/Measurements`, measurement);
   }
 
   // update by id

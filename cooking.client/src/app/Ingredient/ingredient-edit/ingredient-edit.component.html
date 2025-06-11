@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Ingredient Form</h1>
+
+  <form class="form" [formGroup]="ingredientForm">
+    <div class="row">
+      <div class="col">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="name" />
+          <label class="label">Ingredient Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="description" />
+          <label class="label">Description</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <div class="btn-group">
+          <button type="button" style="margin-right: 16px;" class="btn btn-outline-danger" (click)="onClear()">Clear Ingredient</button>
+          <button type="button" style="" class="btn btn-outline-success" (click)="onSubmit()">Save Ingredient</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Measurement Form</h1>
+
+  <form class="form" [formGroup]="measurementForm">
+    <div class="row">
+      <div class="col">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" formControlName="measurementName" />
+          <label class="label">Measurement Name</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <div class="btn-group">
+          <button type="button" style="margin-right: 16px;" class="btn btn-outline-danger" (click)="onClear()">Clear Measurement</button>
+          <button type="button" style="" class="btn btn-outline-success" (click)="onSubmit()">Save Measurement</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
