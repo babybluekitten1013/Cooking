@@ -27,4 +27,8 @@ export class RecipeDetailComponent implements OnInit {
       this.recipeID = Number(params.get('id'));
     })
   }
+
+  onPrint(): void {
+    window.print();
+  }
 }

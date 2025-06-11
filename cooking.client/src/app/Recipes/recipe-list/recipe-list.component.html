@@ -1,12 +1,18 @@
-<button class="btn btn-primary" routerLink="/Recipes/create">Create New Recipe</button>
+<div class="container">
+  <div class="row" *ngIf="displayControls">
+    <div class="col d-flex justify-content-start">
+      <div class="btn-group">
+        <button class="btn btn-outline-success" style="margin-bottom: 16px; margin-top: 16px; margin-right: 16px;" routerLink="/Recipes/create">Create New Recipe</button>
+        <button class="btn btn-outline-dark" style="margin-bottom: 16px; margin-top: 16px;" routerLink="/Recipes/edit">Edit Recipe</button>
+      </div>
+    </div>
+  </div>
 
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let item of recipes$ | async">
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-  <div class="col" *ngFor="let item of recipes$ | async">
+      <app-recipe-card [recipe]="item"></app-recipe-card>
 
-
-    <app-recipe-card [recipe]="item"></app-recipe-card>
-
+    </div>
   </div>
 </div>
-

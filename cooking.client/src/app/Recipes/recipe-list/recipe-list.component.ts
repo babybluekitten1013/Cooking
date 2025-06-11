@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
 
 @Component({
@@ -11,7 +11,8 @@ export class RecipeListComponent implements OnInit {
 
   dataService = inject(DataService);
 
-  recipes$ = this.dataService.recipes$;
+  @Input() recipes$ = this.dataService.recipes$;
+  @Input() displayControls = true;
 
   ngOnInit(): void {
     this.dataService.getAllRecipes();

@@ -3,8 +3,10 @@
   <div class="card-body">
     <h5 class="card-title">{{ recipe.name }}</h5>
     <p class="card-text">{{ recipe.description }}</p>
-    <button class="btn-primary" [routerLink]="['/Recipes', recipe.recipeID]">Recipe Details</button>
-    <button class="btn btn-danger" (click)="removeRecipe(recipe.recipeID)">Delete Recipe</button>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-outline-success" [routerLink]="['/Recipes', recipe.recipeID]">Recipe Details</button>
+      <button type="button" class="btn btn-outline-danger" (click)="removeRecipe(recipe.recipeID)">Delete Recipe</button>
+    </div>
   </div>
 </div>
 

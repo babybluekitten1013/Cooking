@@ -84,6 +84,6 @@ export class RecipeEditComponent {
 
   //clear form function
   onClear(): void {
-    
+    this.recipeForm.reset();
   }
 }

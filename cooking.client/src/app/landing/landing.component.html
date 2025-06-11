@@ -1,30 +1,31 @@
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="images/BananaChocBread.jpg" class="d-sm-block w-10" alt="BananaChocBread">
-    </div>
-    <div class="carousel-item">
-      <img src="images/BlueberryMuffin.jpg" class="d-sm-block w-10" alt="BlueberryMuffin">
-    </div>
-    <div class="carousel-item">
-      <img src="images/Bread.jpg" class="d-sm-block w-10" alt="Bread">
+<div class="container ">
+  <div class="row ">
+    <div class="col">
+      <div id="carouselExampleAutoplaying" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/black_pudding.png" class="w-100 mh-25">
+          </div>
+          <div class="carousel-item">
+            <img src="images/black_pudding.png" class="w-100 mh-25">
+          </div>
+          <div class="carousel-item">
+            <img src="images/black_pudding.png" class="w-100 mh-25">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-  <div class="col" *ngFor="let item of recipes$ | async">
-
-
-    <app-recipe-card [recipe]="item"></app-recipe-card>
-
+  <div class="mt-4">
+    <h1>Recipes of the week</h1>
+    <app-recipe-list [recipes$]="topFour$" [displayControls]="false"></app-recipe-list>
   </div>
 </div>
