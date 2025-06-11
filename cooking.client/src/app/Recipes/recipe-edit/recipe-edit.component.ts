@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { DataService, MeasurementIngredient, Recipe } from '../../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
-
+//TODO: finish update form
 @Component({
   selector: 'app-recipe-edit',
   standalone: false,
@@ -117,10 +117,6 @@ export class RecipeEditComponent implements OnInit{
       this.router.navigate(["Recipes", data.recipeID]);
       
     });
-  };
-  //initalize form function
-  OnInit(): void {
-    console.log("Some code here!")
   };
 
   get measureIngred() {

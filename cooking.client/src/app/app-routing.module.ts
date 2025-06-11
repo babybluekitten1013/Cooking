@@ -5,6 +5,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { RecipeListComponent } from './Recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
+import { AboutMeComponent } from './about-me/about-me.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: "Recipes",
     component: RecipeListComponent
+  },
+  {
+    path: "About",
+    component: AboutMeComponent
   },
   {
     path: "Recipes/create",

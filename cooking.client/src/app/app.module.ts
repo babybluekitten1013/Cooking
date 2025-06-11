@@ -12,6 +12,7 @@ import { RecipeDetailComponent } from './Recipes/recipe-detail/recipe-detail.com
 import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
+import { AboutMeComponent } from './about-me/about-me.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeCardComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AboutMeComponent
   ],
   imports: [
     BrowserModule,
