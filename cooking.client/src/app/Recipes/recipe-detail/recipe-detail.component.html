@@ -4,7 +4,10 @@
 
   <img class="float-end" [src]="recipe?.imageURL" />
 
-  <div class="tags">
+  <div class="">
+    <a [routerLink]="['/Recipes', recipe?.recipeID, 'edit']" class="btn btn-secondary btn-sm">Edit Recipe</a>
+  </div>
+  <div class="tags" *ngIf="recipe?.recipeTag">
     Tags:
     <span>{{recipe?.recipeTag}}</span>
   </div>
