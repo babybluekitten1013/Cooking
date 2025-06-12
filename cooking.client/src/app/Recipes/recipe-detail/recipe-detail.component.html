@@ -1,9 +1,7 @@
 @let recipe = recipe$ | async;
 <div class="container">
-  <h1>{{recipe?.name}}</h1>
-
-  <img class="float-end" [src]="recipe?.imageURL" />
-
+    <h1>{{recipe?.name}}</h1>
+    
   <div class="">
     <a [routerLink]="['/Recipes', recipe?.recipeID, 'edit']" class="btn btn-secondary btn-sm">Edit Recipe</a>
   </div>
@@ -11,10 +9,12 @@
     Tags:
     <span>{{recipe?.recipeTag}}</span>
   </div>
-  <div class="tags_2">
-  <span>{{recipe?.description}}</span>
+  <div class="row">
+    <div class="col">
+      <img class="w-25 float-md-end ms-4 mb-4" [src]="recipe?.imageURL" />
+      {{recipe?.description}}
+    </div>
   </div>
-
   <div class="">
     <ul>
       <li>Prep Time: {{recipe?.prepTime}}</li>
@@ -22,7 +22,6 @@
       <li>Yields: {{recipe?.yield}} {{recipe?.name}}</li>
     </ul>
   </div>
-
   <div>
     <h2> Ingredients: </h2>
     <ul>
@@ -31,15 +30,12 @@
       </li>
     </ul>
   </div>
-
   <div>
     <h2> Instructions: </h2>
     <p>{{recipe?.instructions}}</p>
   </div>
-
   <div>
-    <button type="button" class="btn" style="color:white; Background-color:green" (click)="onPrint()">Print Recipe</button>
+    <button type="button" class="btn btn-success"  (click)="onPrint()">Print Recipe</button>
   </div>
-<!--<pre>{{recipe | json }}</pre>-->
 </div>
 

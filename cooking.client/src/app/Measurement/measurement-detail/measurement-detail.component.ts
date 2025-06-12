@@ -16,4 +16,8 @@ export class MeasurementDetailComponent implements OnInit{
   ngOnInit(): void {
     this.dataService.getAllMeasurments();
   }
+
+  removeMeasurement(id: number): void {
+
+  }
 }
