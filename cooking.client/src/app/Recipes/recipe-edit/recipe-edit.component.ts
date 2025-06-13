@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { DataService, MeasurementIngredient, Recipe } from '../../data.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataService, Ingredient, MeasurementIngredient, Recipe } from '../../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 //TODO: finish update form
@@ -22,19 +22,20 @@ export class RecipeEditComponent implements OnInit{
   measurements = this.dataService.measurements$;
 
   ngOnInit(): void {
-    this.dataService.recipes$.pipe(
-      map((recipes: Recipe[]) => recipes.filter(recipe => recipe.recipeID == this.id)[0]),
-      tap(val => console.log("Selected Recipe", val)),
-    ).subscribe(data => {
-      if (!data) {
-        this.initEmptyForm();
-      } else {
-        this.initExistingForm(data);
-      }
-    })
-
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get("id"));
+
+      this.dataService.recipes$.pipe(
+        map((recipes: Recipe[]) => recipes.filter(recipe => recipe.recipeID == this.id)[0]),
+        tap(val => console.log("Selected Recipe", val)),
+      ).subscribe(data => {
+        if (!data) {
+          this.initEmptyForm();
+        } else {
+          console.log("Recipe", data);
+          this.initExistingForm(data);
+        }
+      })
     })
   }
 
@@ -82,14 +83,17 @@ export class RecipeEditComponent implements OnInit{
     });
 
     recipe.measurementIngredients.forEach(mi => {
-      this.measureIngred.push(this.fb.group({
-        measurementIngredientID: [mi.measurementIngredientId, [Validators.required]],
-        measurementID: [mi.measurementId, [Validators.required]],
-        ingredientID: [mi.ingredientId, [Validators.required]],
-        recipeID: [mi.recipeID, [Validators.required]],
-        quantity: [mi.quantity, [Validators.required]],
-        details: [mi.details, [Validators.required]]
-      }))
+
+      this.addIngredient();
+      var item = this.measureIngred.controls[this.measureIngred.controls.length - 1];
+      item.patchValue({
+        measurementIngredientID: mi.measurementIngredientId,
+        measurementID: mi.measurementId,
+        ingredientID: mi.ingredientId,
+        recipeID: mi.recipeID,
+        quantity: mi.quantity,
+        details: mi.details
+      })
     })
   }
 
@@ -119,9 +123,13 @@ export class RecipeEditComponent implements OnInit{
     });
   };
 
-  get measureIngred() {
+  get measureIngred(): FormArray {
     return this.recipeForm.controls.measurementIngredients as FormArray;
   }
+
+  //getIngredientNameById(id: number): string {
+  //  return this.ingredients.getValue().map((ingredients: Ingredient[]) => ingredients.filter((ingredient: Ingredient) => ingredient.ingredientID == id))
+  //}
 
   addIngredient() {
     this.measureIngred.push(this.fb.group({

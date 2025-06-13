@@ -1,21 +1,26 @@
 <div class="container">
-  <h1>Measurement Form</h1>
+  <div class="row">
+    <div class="col d-flex justify-content-between">
+      <h1 class="mb-4">Measurement Form</h1>
+      <div class="d-flex align-items-center">
+        <button type="button" class="btn btn-primary" [routerLink]="['/Measurement']">Back</button>
+      </div>
+    </div>
+  </div>
 
   <form class="form" [formGroup]="measurementForm">
     <div class="row">
       <div class="col">
-        <div class="form-floating mb-3">
+        <div class="form-floating mb-6">
           <input type="text" class="form-control" formControlName="measurementName" />
           <label class="label">Measurement Name</label>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-2">
       <div class="col d-flex justify-content-end">
-        <div class="btn-group">
-          <button type="button" style="margin-right: 16px;" class="btn btn-outline-danger" (click)="onClear()">Clear Measurement</button>
+          <button type="button" style="margin-right: 12px;" class="btn btn-outline-danger" (click)="onClear()">Clear Measurement</button>
           <button type="button" style="" class="btn btn-outline-success" (click)="onSubmit()">Save Measurement</button>
-        </div>
       </div>
     </div>
   </form>

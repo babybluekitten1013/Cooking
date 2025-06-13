@@ -78,7 +78,7 @@
             <div class="col">
               <div class="form-floating mb-3">
                 <select class="form-select" formControlName="measurementID">
-                  <option *ngFor="let measurement of measurements | async" [value]="measurement.measurementID">{{measurement.measurementName}}</option>
+                  <option *ngFor="let measurement of measurements | async" [ngValue]="measurement.measurementID">{{measurement.measurementName}}</option>
                 </select>
                 <label>Unit of Measure</label>
               </div>
@@ -88,17 +88,15 @@
             <div class="col">
               <div class="form-floating">
                 <select class="form-select" formControlName="ingredientID">
-                  <option *ngFor="let ingredient of ingredients | async" [value]="ingredient.ingredientID">{{ingredient.name}}</option>
+                  <option *ngFor="let ingredient of ingredients | async" [ngValue]="ingredient.ingredientID">{{ingredient.name}}</option>
                 </select>
                 <label>Ingredient</label>
               </div>
             </div>
             <div class="col">
               <div class="form-floating">
-                <select class="form-select" formControlName="details">
-                  <option>For Batter</option>
-                </select>
-                <label>Details</label>
+                <input class="form-control" type="text" formControlName="details" />
+                <label>Notes</label>
               </div>
             </div>
           </div>
@@ -121,3 +119,5 @@
     </div>
   </form>
 </div>
+
+<pre>{{measurements | async | json}}</pre>

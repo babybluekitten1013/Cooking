@@ -136,6 +136,7 @@ export class DataService {
   getAllMeasurments() {
     // call the api
     this.http.get<Measurement[]>(`api/Measurements`).subscribe(data => {
+      console.log(data);
       this.measurements$.next(data);
     });
   }
@@ -172,6 +173,7 @@ export class DataService {
   getAllMeasurementIngredients() {
     // call the api
     this.http.get<MeasurementIngredient[]>(`api/MeasurementIngredients`).subscribe(data => {
+      console.log(data);
       this.measurementIngredients$.next(data);
     });
   }
