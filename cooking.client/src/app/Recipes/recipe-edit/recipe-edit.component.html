@@ -87,9 +87,10 @@
           <div class="row">
             <div class="col">
               <div class="form-floating">
-                <select class="form-select" formControlName="ingredientID">
+                <!--<select class="form-select" formControlName="ingredientID">
                   <option *ngFor="let ingredient of ingredients | async" [ngValue]="ingredient.ingredientID">{{ingredient.name}}</option>
-                </select>
+                </select>-->
+                <input class="form-control" type="text" formControlName="ingredientID" />
                 <label>Ingredient</label>
               </div>
             </div>
