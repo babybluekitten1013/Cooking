@@ -13,6 +13,8 @@ import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AboutMeComponent } from './about-me/about-me.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LMarkdownEditorModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

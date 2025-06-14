@@ -32,7 +32,7 @@
   </div>
   <div>
     <h2> Instructions: </h2>
-    <p>{{recipe?.instructions}}</p>
+    <markdown [data]="recipe?.instructions"></markdown>
   </div>
   <div>
     <button type="button" class="btn btn-success"  (click)="onPrint()">Print Recipe</button>
