@@ -16,14 +16,12 @@ namespace Cooking.Server.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Recipe>().Navigation<MeasurementIngredient>(r => r.MeasurementIngredients).AutoInclude();
-            modelBuilder.Entity<MeasurementIngredient>().Navigation<Measurement>(r => r.Measurement).AutoInclude();
-            modelBuilder.Entity<MeasurementIngredient>().Navigation<Ingredient>(r => r.Ingredient).AutoInclude();
+            //modelBuilder.Entity<MeasurementIngredient>().Navigation<Measurement>(r => r.Measurement).AutoInclude();
+            //modelBuilder.Entity<MeasurementIngredient>().Navigation<Ingredient>(r => r.Ingredient).AutoInclude();
 
             //seed data
             // blueberry muffin
             int recipeId = 1;
-            int ingredientId = 1;
-            int measurementId = 1;
             int measurementingredientId = 1;
 
             var muffin = new Recipe
@@ -41,28 +39,11 @@ namespace Cooking.Server.Data
 
             modelBuilder.Entity<Recipe>().HasData(muffin);
 
-            var blueberry = new Ingredient
-            {
-                IngredientID = ingredientId,
-                Name = "Blueberry",
-                Description = "Fruit"
-            };
-
-            modelBuilder.Entity<Ingredient>().HasData(blueberry);
-
-            var cups = new Measurement
-            {
-                MeasurementID = measurementId,
-                MeasurementName = "Cup"
-            };
-
-            modelBuilder.Entity<Measurement>().HasData(cups);
-
             var blueberryCups = new MeasurementIngredient
             {
                 MeasurementIngredientID = measurementingredientId,
-                MeasurementID = measurementId,
-                IngredientID = ingredientId,
+                MeasurementName = "Cup",
+                IngredientName = "Flour",
                 RecipeID = recipeId,
                 Quantity = 2,
                 Details = "For Batter"
@@ -72,8 +53,6 @@ namespace Cooking.Server.Data
         }
 
         public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Ingredient> Ingredents { get; set; }
-        public DbSet<Measurement> Mesurements { get; set; }
         public DbSet<MeasurementIngredient> MesurementIngredients { get; set; }
     }
 }

@@ -52,10 +52,10 @@ namespace Cooking.Server.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(recipe).State = EntityState.Modified;
-
             try
             {
+                _context.Update(recipe);
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

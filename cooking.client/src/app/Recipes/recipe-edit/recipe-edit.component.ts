@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService, Ingredient, MeasurementIngredient, Recipe } from '../../data.service';
+import { DataService, MeasurementIngredient, Recipe } from '../../data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
 //TODO: finish update form
@@ -18,21 +18,16 @@ export class RecipeEditComponent implements OnInit{
 
   id: number | null = null;
 
-  ingredients = this.dataService.ingredients$;
-  measurements = this.dataService.measurements$;
-
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.id = Number(params.get("id"));
 
       this.dataService.recipes$.pipe(
         map((recipes: Recipe[]) => recipes.filter(recipe => recipe.recipeID == this.id)[0]),
-        tap(val => console.log("Selected Recipe", val)),
       ).subscribe(data => {
         if (!data) {
           this.initEmptyForm();
         } else {
-          console.log("Recipe", data);
           this.initExistingForm(data);
         }
       })
@@ -87,9 +82,9 @@ export class RecipeEditComponent implements OnInit{
       this.addIngredient();
       var item = this.measureIngred.controls[this.measureIngred.controls.length - 1];
       item.patchValue({
-        measurementIngredientID: mi.measurementIngredientId,
-        measurementID: mi.measurementId,
-        ingredientID: mi.ingredientId,
+        measurementIngredientID: mi.measurementIngredientID,
+        measurementName: mi.measurementName,
+        ingredientName: mi.ingredientName,
         recipeID: mi.recipeID,
         quantity: mi.quantity,
         details: mi.details
@@ -99,10 +94,30 @@ export class RecipeEditComponent implements OnInit{
 
   //on submit function
   onSubmit(): void {
-    console.log("Form Submitted!")
-    console.log(this.recipeForm.value)
 
-    let newRecipe: Recipe = {
+    if (this.id) {
+      console.log("form", this.recipeForm.value);
+      let newRecipe: Recipe = {
+        recipeID: this.id,
+        name: this.recipeForm.value.recipeName!,
+        recipeTag: this.recipeForm.value.recipeTag!,
+        description: this.recipeForm.value.description!,
+        instructions: this.recipeForm.value.instructions!,
+        prepTime: this.recipeForm.value.prepTime!,
+        cookTime: this.recipeForm.value.cookTime!,
+        yield: this.recipeForm.value.yields!,
+        imageURL: this.recipeForm.value.image!,
+        measurementIngredients: this.recipeForm.value.measurementIngredients as MeasurementIngredient[]
+      }
+      console.log("Updated", newRecipe);
+      this.dataService.updateRecipe(this.id, newRecipe).subscribe(data => {
+        console.log("Returned", data);
+        this.dataService.getAllRecipes();
+        this.router.navigate(["Recipes", this.id]);
+      });
+    }
+    else {
+      let newRecipe: Recipe = {
         recipeID: Number(this.recipeForm.value.recipeID),
         name: this.recipeForm.value.recipeName!,
         recipeTag: this.recipeForm.value.recipeTag!,
@@ -113,14 +128,15 @@ export class RecipeEditComponent implements OnInit{
         yield: this.recipeForm.value.yields!,
         imageURL: this.recipeForm.value.image!,
         measurementIngredients: this.recipeForm.value.measurementIngredients as MeasurementIngredient[]
+      }
+
+      this.dataService.createRecipe(newRecipe).subscribe(data => {
+        this.dataService.getAllRecipes();
+        this.router.navigate(["Recipes", data.recipeID]);
+      });
     }
 
-    this.dataService.createRecipe(newRecipe).subscribe(data => {
-      console.log("Created:", data)
-      this.dataService.getAllRecipes();
-      this.router.navigate(["Recipes", data.recipeID]);
-      
-    });
+
   };
 
   get measureIngred(): FormArray {
@@ -134,8 +150,8 @@ export class RecipeEditComponent implements OnInit{
   addIngredient() {
     this.measureIngred.push(this.fb.group({
       measurementIngredientID: [0, [Validators.required]],
-      measurementID: [0, [Validators.required]],
-      ingredientID: [0, [Validators.required]],
+      measurementName: ['', [Validators.required]],
+      ingredientName: ['', [Validators.required]],
       recipeID: [0, [Validators.required]],
       quantity: [0, [Validators.required]],
       details: ['', [Validators.required]]
@@ -143,7 +159,10 @@ export class RecipeEditComponent implements OnInit{
   }
 
   removeIngredient(index: number) {
-    this.measureIngred.removeAt(index);
+    this.dataService.deleteMeasurementIngredients(this.measureIngred.controls[index].value.measurementIngredientID).subscribe(data => {
+      this.measureIngred.removeAt(index);
+    })
+    
   }
 
   //clear form function

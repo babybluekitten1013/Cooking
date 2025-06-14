@@ -17,7 +17,6 @@ export class RecipeDetailComponent implements OnInit {
   recipeID: number = 0
   recipe$ = this.dataService.recipes$.pipe(
     map((recipes: Recipe[]) => recipes.filter(recipe => recipe.recipeID == this.recipeID)[0]),
-    tap(val => console.log("Selected Recipe", val)),
   )
 
 

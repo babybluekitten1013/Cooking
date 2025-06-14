@@ -13,10 +13,6 @@ import { RecipeCardComponent } from './Recipes/recipe-card/recipe-card.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeEditComponent } from './Recipes/recipe-edit/recipe-edit.component';
 import { AboutMeComponent } from './about-me/about-me.component';
-import { IngredientComponent } from './Ingredient/ingredient-edit/ingredient-edit.component';
-import { MeasurementComponent } from './Measurement/measurement-edit/measurement-edit.component';
-import { MeasurementDetailComponent } from './Measurement/measurement-detail/measurement-detail.component';
-import { IngredientDetailComponent } from './Ingredient/ingredient-detail/ingredient-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +25,6 @@ import { IngredientDetailComponent } from './Ingredient/ingredient-detail/ingred
     RecipeCardComponent,
     RecipeEditComponent,
     AboutMeComponent,
-    IngredientComponent,
-    MeasurementComponent,
-    MeasurementDetailComponent,
-    IngredientDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@
     <h2> Ingredients: </h2>
     <ul>
       <li *ngFor="let mingred of recipe?.measurementIngredients">
-        {{mingred.quantity}} {{mingred.measurement?.measurementName}} {{mingred.ingredient?.name}}
+        {{mingred.quantity}} {{mingred.measurementName}} {{mingred.ingredientName}}
       </li>
     </ul>
   </div>
